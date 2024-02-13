@@ -2,18 +2,30 @@ import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
+
 const linkStyle = {
     color: 'white',
     textDecoration: 'none'
 }
+
 const authenticatedOptions = (
 	<>
-		<Nav.Item>
+		<Nav.Item className='m-2'>
+			<Link to='' style={linkStyle}>
+				Create a Conspiracy
+			</Link>
+		</Nav.Item>
+		<Nav.Item className='m-2'>
+			<Link to='' style={linkStyle}>
+				My Conspiracies
+			</Link>
+		</Nav.Item>
+		<Nav.Item className='m-2'>
 			<Link to='change-password' style={linkStyle}>
 				Change Password
 			</Link>
 		</Nav.Item>
-		<Nav.Item>
+		<Nav.Item className='m-2'>
 			<Link to='sign-out' style={linkStyle}>
 				Sign Out
 			</Link>
@@ -23,18 +35,18 @@ const authenticatedOptions = (
 
 const unauthenticatedOptions = (
 	<>
-        <Nav.Item>
-		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
-        </Nav.Item>
-        <Nav.Item>
-		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
-        </Nav.Item>
+        <Nav.Link className='m-2'>
+			<Link to='sign-up' style={linkStyle}>Sign Up</Link>
+        </Nav.Link>
+        <Nav.Link className='m-2'>
+			<Link to='sign-in' style={linkStyle}>Sign In</Link>
+        </Nav.Link>
 	</>
 )
 
 const alwaysOptions = (
 	<>
-		<Nav.Link>
+		<Nav.Link className='m-2'>
 			<Link to='/' style={linkStyle}>
 				Home
 			</Link>
@@ -44,9 +56,9 @@ const alwaysOptions = (
 
 const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
-		<Navbar.Brand>
+		<Navbar.Brand className='m-2'>
             <Link to='/' style={linkStyle}>
-                react-auth-template
+                Conspiracy Corner
             </Link>
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
