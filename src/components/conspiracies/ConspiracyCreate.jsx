@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
+import StoriesIndex from '../stories/StoriesIndex'
 import ConspiracyForm from '../shared/ConspiracyForm'
 import { useNavigate } from 'react-router-dom'
 import { createConspiracy } from '../../api/conspiracy'
 
-const ConspiracyCreate = ({ user, msgAlert, storyId }) => {
+const ConspiracyCreate = ({ user, msgAlert }) => {
     const navigate = useNavigate()
+    const [selectedStoryId, setSelectedStoryId] = useState(null)
+
+    // cb function - update selectedStoryId when story is selected
+    const handleStorySelect = (storyId) => {
+        setSelectedStoryId(storyId)
+    }
 
     const handleSubmit = (conspiracyData) => {
         createConspiracy(user, conspiracyData)
@@ -25,10 +32,16 @@ const ConspiracyCreate = ({ user, msgAlert, storyId }) => {
             })
     }
 
+    // render StoriesIndex component if no story has been selected
+    if (!selectedStoryId) {
+        return <StoriesIndex onStorySelect={handleStorySelect} />
+    }
+
+    // render ConspiracyForm - after selected story
     return (
         <ConspiracyForm
             user={user}
-            storyId={storyId}
+            storyId={selectedStoryId}
             handleSubmit={handleSubmit}
         />
     )
