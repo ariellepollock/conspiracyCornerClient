@@ -73,7 +73,7 @@ const App = () => {
 					}
 				/>
 				<Route
-					path='/create-conspiracy'
+					path='/create-conspiracy/:storyId'
 					element={
 						<RequireAuth user={user}>
 							<ConspiracyCreate msgAlert={msgAlert} user={user} />

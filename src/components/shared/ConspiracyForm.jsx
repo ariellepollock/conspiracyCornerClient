@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams, useNavigate } from 'react-router-dom'
 import { Form, Button, Container } from 'react-bootstrap'
+import ElementForm from './ElementForm'
 
 const ConspiracyForm = ({ match }) => {
     const { storyId, conspiracyId } = useParams()
@@ -37,14 +38,13 @@ const ConspiracyForm = ({ match }) => {
     }
 
     // handle input change
-    const handleChange = (event) => {
-        const { name, value } = event.target
-        setInputs(inputs => ({ ...inputs, [name]: value }))
+    const handleChange = (placeholder, value) => {
+        setInputs(inputs => ({ ...inputs, [placeholder]: value }))
     }
 
     // handle form submission
-    const handleSubmit = (event) => {
-        event.preventDefault()
+    const handleSubmit = (e) => {
+        e.preventDefault()
         const url = conspiracyId ? `/api/conspiracies/${conspiracyId}` : '/api/conspiracies'
         const method = conspiracyId ? 'put' : 'post'
 
@@ -64,15 +64,12 @@ const ConspiracyForm = ({ match }) => {
             <h2>{story?.title || 'Loading story...'}</h2>
             <Form onSubmit={handleSubmit}>
                 {story && Object.keys(inputs).map((placeholder, index) => (
-                    <Form.Group key={index} className='m-2'>
-                        <Form.Label>{placeholder}</Form.Label>
-                        <Form.Control 
-                            type='text'
-                            name={placeholder}
-                            value={inputs[placeholder]}
-                            onChange={handleChange}
-                        />
-                    </Form.Group>
+                    <ElementForm
+                        key={`element-${placeholder}-${index}`}
+                        placeholder={placeholder}
+                        value={inputs[placeholder]}
+                        onChange={handleChange}
+                    />
                 ))}
                 {error && <p>{error}</p>}
                 <Button type='submit' className='m-2'>Create Conspiracy</Button>

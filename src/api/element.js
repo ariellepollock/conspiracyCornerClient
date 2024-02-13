@@ -2,18 +2,18 @@ import apiUrl from '../apiConfig'
 import axios from 'axios'
 
 // CREATE -> Create an element
-export const createElement = (conspiracy, newElement) => {
+export const createElement = (conspiracyId, newElement) => {
     return axios({
-        url: `${apiUrl}/elements/${conspiracy._id}`,
+        url: `${apiUrl}/elements/${conspiracyId}`,
         method: 'POST',
         data: { element: newElement }
     })
 }
 
 // UPDATE -> Edit an element
-export const updateElement = (user, conspiracy, updatedElement) => {
+export const updateElement = (user, conspiracyId, elementId, updatedElement) => {
     return axios({
-        url: `${apiUrl}/elements/${conspiracy._id}/${updateElement._id}`,
+        url: `${apiUrl}/elements/${conspiracyId}/${elementId}`,
         method: 'PATCH',
         headers: {
             Authorization: `Token token=${user.token}`
