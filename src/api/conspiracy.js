@@ -2,13 +2,14 @@ import apiUrl from '../apiConfig'
 import axios from 'axios'
 
 // READ -> Conpsiracies Index (my conspiracies)
-export const getAllConspiracies = () => { // and user to () if using auth
+export const getAllConspiracies = (user, conspiracyData) => {
     return axios({
-        url: apiUrl + '/conspiracies',
+        url: 'api/conspiracies',
         method: 'GET',
-        // headers: {
-        //     Authorization: `Token token=${user.token}`,
-        // },
+        headers: {
+            Authorization: `Token token=${user.token}`,
+        },
+        data: conspiracyData
     })
 }
 
@@ -18,5 +19,16 @@ export const getOneConspiracy = (id) => {
 }
 
 // CREATE -> Create a Conspiracy
+export const createConspiracy = (user, conspiracyData) => {
+    return axios({
+        url: '/api/conspiracies',
+        method: 'POST',
+        headers: {
+            Authorization: `Token token=${user.token}`,
+        },
+        data: conspiracyData
+    })
+}
+
 // UPDATE -> Adjust a Conspiracy
 // DELETE -> Quash a Conspiracy

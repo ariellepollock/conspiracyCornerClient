@@ -11,7 +11,7 @@ const linkStyle = {
 const authenticatedOptions = (
 	<>
 		<Nav.Link className='m-2'>
-			<Link to='' style={linkStyle}>
+			<Link to='create-conspiracy' style={linkStyle}>
 				Create a Conspiracy
 			</Link>
 		</Nav.Link>

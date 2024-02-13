@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams, useNavigate } from 'react-router-dom'
+import { Form, Button, Container } from 'react-bootstrap'
 
 const ConspiracyForm = ({ match }) => {
     const { storyId, conspiracyId } = useParams()
@@ -59,22 +60,24 @@ const ConspiracyForm = ({ match }) => {
 
     // render form
     return (
-        <form onSubmit={handleSubmit}>
+        <Container className='justify-content-center'>
             <h2>{story?.title || 'Loading story...'}</h2>
-            {story && Object.keys(inputs).map((placeholder, index) => (
-                <div key={index}>
-                    <label>{placeholder}</label>
-                    <input 
-                        type='text'
-                        name={placeholder}
-                        value={inputs[placeholder]}
-                        onChange={handleChange}
-                    />
-                </div>
-            ))}
-            {error && <p>{error}</p>}
-            <button type='submit'>Create Conspiracy</button>
-        </form>
+            <Form onSubmit={handleSubmit}>
+                {story && Object.keys(inputs).map((placeholder, index) => (
+                    <Form.Group key={index} className='m-2'>
+                        <Form.Label>{placeholder}</Form.Label>
+                        <Form.Control 
+                            type='text'
+                            name={placeholder}
+                            value={inputs[placeholder]}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                ))}
+                {error && <p>{error}</p>}
+                <Button type='submit' className='m-2'>Create Conspiracy</Button>
+            </Form>
+        </Container>
     )
 }
 
