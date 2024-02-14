@@ -2,9 +2,9 @@ import React from 'react'
 import { Form } from 'react-bootstrap'
 
 const ElementForm = ({ placeholder, value, onChange }) => {
-    const handleChange = (e) => {
-        onChange(placeholder, e.target.value)
-    }
+    // const handleChange = (e) => {
+    //     onChange(placeholder, e)
+    // }
 
     return (
         <Form.Group className='mb-3'>
@@ -13,7 +13,7 @@ const ElementForm = ({ placeholder, value, onChange }) => {
                 type='text'
                 name={placeholder}
                 value={value}
-                onChange={handleChange}
+                onChange={(e) => onChange(e)}
             />
         </Form.Group>
     )

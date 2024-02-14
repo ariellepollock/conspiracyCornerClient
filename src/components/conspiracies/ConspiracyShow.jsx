@@ -15,7 +15,6 @@ const conspiracyCardContainerLayout = {
 const ConspiracyShow = ({ user, msgAlert }) => {
     const { conspiracyId } = useParams()
     const [conspiracy, setConspiracy] = useState(null)
-
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -31,6 +30,11 @@ const ConspiracyShow = ({ user, msgAlert }) => {
                 })
             })
     }, [conspiracyId, msgAlert])
+
+    // update button click
+    const handleUpdateClick = () => {
+        navigate(`/conspiracies/${conspiracyId}/edit`, { state: { conspiracy }})
+    }
 
     // quash a conspiracy
     const quashConspiracy = () => {
@@ -85,6 +89,13 @@ const ConspiracyShow = ({ user, msgAlert }) => {
                     >
                         Quash this Conspiracy
                     </Button>
+                    <Button
+                        className='m-2'
+                        variant='warning'
+                        onClick={handleUpdateClick}
+                    >
+                        Adjust this Conspiracy
+                    </Button>                    
                 </Card>
             </Container>
         </>

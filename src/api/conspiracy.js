@@ -24,6 +24,16 @@ export const createConspiracy = (user, conspiracyData) => {
 }
 
 // UPDATE -> Adjust a Conspiracy
+export const updateConspiracy = (user, updatedConspiracy) => {
+    return axios({
+        url: `${apiUrl}/conspiracies/${updatedConspiracy._id}`,
+        method: 'PATCH',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+        data: { conspiracy: updatedConspiracy }
+    })
+}
 
 // DELETE -> Quash a Conspiracy
 export const removeConspiracy = (user, id) => {

@@ -15,6 +15,7 @@ import ChangePassword from './components/auth/ChangePassword'
 import ConspiracyShow from './components/conspiracies/ConspiracyShow'
 import ConspiracyCreate from './components/conspiracies/ConspiracyCreate'
 import ConspiraciesIndex from './components/conspiracies/ConspiraciesIndex'
+import ConspiracyForm from './components/shared/ConspiracyForm'
 
 const App = () => {
 
@@ -89,6 +90,14 @@ const App = () => {
 						</RequireAuth>
 					}
 				/>
+				<Route
+					path='/conspiracies/:conspiracyId/edit'
+					element={
+						<RequireAuth user={user}>
+							<ConspiracyForm msgAlert={msgAlert} user={user} />
+						</RequireAuth>
+					}
+				/>				
 				<Route
 					path='/conspiracies/:conspiracyId'
 					element={
