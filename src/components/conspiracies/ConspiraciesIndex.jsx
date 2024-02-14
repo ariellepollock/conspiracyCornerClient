@@ -44,8 +44,8 @@ const ConspiraciesIndex = (props) => {
     }
 
     const conspiracyCards = conspiracies.map(conspiracy => (
-        <Card key={conspiracy.id} style={{ width: '30%', margin: 5 }}>
-            <Card.Header>{conspiracy.story?.title}</Card.Header>
+        <Card key={conspiracy._id} style={{ width: '30%', margin: 5 }}>
+            <Card.Header>{conspiracy.story?.title || 'View to Unlock'}</Card.Header>
             <Card.Body>
                 <Card.Text>
                     <Link to={`/conspiracies/${conspiracy._id}`} className='btn btn-info'>

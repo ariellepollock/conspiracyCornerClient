@@ -33,16 +33,26 @@ const ConspiracyShow = ({ user, msgAlert }) => {
         return <LoadingScreen />
     }
 
+    // Format the date for display using toLocaleDateString()
+    const displayDate = conspiracy.date ? new Date(conspiracy.date).toLocaleDateString('en-US', {
+        year: 'numeric', // numeric, 2-digit
+        month: 'long', // numeric, 2-digit, long, short, narrow
+        day: 'numeric', // numeric, 2-digit
+    }) : 'Unknown date'
+
     return (
         <>
             <Container className='m-2' style={conspiracyCardContainerLayout}>
                 <Card>
                     <Card.Header>
-                        { conspiracy.story?.title }
+                        { conspiracy.story?.title || 'Story title not available'}
                     </Card.Header>
                     <Card.Body>
+                        <Card.Subtitle className="mb-2 text-muted">
+                            Created on {displayDate}
+                        </Card.Subtitle>
                         <Card.Text>
-                        {conspiracy.story.title || 'Story content not available'}
+                        {conspiracy.filledStory || 'Story content not available'}
                         </Card.Text>
                     </Card.Body>
                 </Card>
