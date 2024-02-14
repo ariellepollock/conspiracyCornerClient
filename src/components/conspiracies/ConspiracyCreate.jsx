@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import StoriesIndex from '../stories/StoriesIndex'
+import StoriesIndex from '../shared/StoriesIndex'
 import ConspiracyForm from '../shared/ConspiracyForm'
 import { useNavigate } from 'react-router-dom'
 

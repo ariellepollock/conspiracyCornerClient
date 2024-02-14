@@ -45,15 +45,22 @@ const ConspiracyForm = (props) => {
     }
 
     // handle form submission
-    const handleSubmit = (e, user) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post(`${apiUrl}/conspiracies`, {
-            story: storyId,
-            elements: Object.entries(inputs).map(([placeholder, content]) => ({ placeholder, content }))
-        }, {
-            headers: {
-                Authorization: `Token token=${user.token}`
+        const conspiracyData = {
+            conspiracy: {
+                story: storyId,
+                elements: Object.entries(inputs).map(([placeholder, content]) => ({ placeholder, content }))
             }
+        }
+
+        axios({
+            url: `${apiUrl}/conspiracies`,
+            method: 'POST',
+            headers: {
+                Authorization: `Token token=${props.user.token}`
+            },
+            data: conspiracyData
         })
         .then(res => {
             navigate(`/conspiracies/${res.data.conspiracy._id}`)
@@ -75,7 +82,8 @@ const ConspiracyForm = (props) => {
                     />
                 ))}
                 {error && <p>{error}</p>}
-                <Button type='submit' className='m-2'>Create Conspiracy</Button>
+                {/* <Button type='submit' className='m-2'>Create Conspiracy</Button> */}
+                <Button type="submit" variant="primary" className='mt-2'>Create Conspiracy</Button>
             </Form>
         </Container>
     )

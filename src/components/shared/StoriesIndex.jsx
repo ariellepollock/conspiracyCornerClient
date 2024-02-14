@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { getAllStories } from '../../api/story'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import { Form, Button, Container } from 'react-bootstrap'
 
 const StoriesIndex = ({ selectedStoryId, onStorySelect }) => {
     const [stories, setStories] = useState([])
     const [error, setError] = useState(false)
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     useEffect(() => {
         getAllStories()
@@ -20,11 +20,11 @@ const StoriesIndex = ({ selectedStoryId, onStorySelect }) => {
     }, [])
 
     // This function navigates to the selected story's conspiracy creation page
-    const handleNavigate = () => {
-        if (selectedStoryId) {
-            navigate(`/create-conspiracy/${selectedStoryId}`);
-        }
-    }
+    // const handleNavigate = () => {
+    //     if (selectedStoryId) {
+    //         navigate(`/create-conspiracy/${selectedStoryId}`);
+    //     }
+    // }
 
     return (
         <Container className='justify-content-center mt-4'>
@@ -38,7 +38,6 @@ const StoriesIndex = ({ selectedStoryId, onStorySelect }) => {
                         ))}
                     </Form.Control>
                 </Form.Group>
-                <Button variant="primary" onClick={handleNavigate} className='mt-2'>Create Conspiracy</Button>
             </Form>
             {error && <p className='mt-3'>There was an issue loading the stories.</p>}
         </Container>
