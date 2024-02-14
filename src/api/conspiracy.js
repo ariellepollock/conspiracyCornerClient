@@ -2,7 +2,7 @@ import apiUrl from '../apiConfig'
 import axios from 'axios'
 
 // READ -> Conpsiracies Index (my conspiracies)
-export const getAllConspiracies = (user, conspiracyData) => {
+export const getAllConspiracies = () => {
     return axios(`${apiUrl}/conspiracies`)
 }
 

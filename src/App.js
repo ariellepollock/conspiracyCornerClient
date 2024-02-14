@@ -14,6 +14,7 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import ConspiracyShow from './components/conspiracies/ConspiracyShow'
 import ConspiracyCreate from './components/conspiracies/ConspiracyCreate'
+import ConspiraciesIndex from './components/conspiracies/ConspiraciesIndex'
 
 const App = () => {
 
@@ -93,7 +94,13 @@ const App = () => {
 					element={
 						<ConspiracyShow msgAlert={msgAlert} user={user} />
 					}
-				/>				
+				/>	
+				<Route
+					path='/conspiracies'
+					element={
+						<ConspiraciesIndex msgAlert={msgAlert} user={user} />
+					}
+				/>							
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert

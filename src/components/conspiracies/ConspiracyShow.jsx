@@ -3,8 +3,6 @@ import { useParams } from 'react-router-dom'
 import { getOneConspiracy } from '../../api/conspiracy'
 import LoadingScreen from '../shared/LoadingScreen'
 import { Container, Card } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
-import messages from '../shared/AutoDismissAlert/messages'
 
 // card container
 const conspiracyCardContainerLayout = {
@@ -13,25 +11,23 @@ const conspiracyCardContainerLayout = {
     flexFlow: 'row wrap'
 }
 
-const ConspiracyShow = (props) => {
+const ConspiracyShow = ({ user, msgAlert }) => {
     const { conspiracyId } = useParams()
-    const { user, msgAlert } = props
-
     const [conspiracy, setConspiracy] = useState(null)
-
-    const navigate = useNavigate()
 
     useEffect(() => {
         getOneConspiracy(conspiracyId)
-            .then(res => setConspiracy(res.data.conspiracy))
+            .then(res => {
+                setConspiracy(res.data.conspiracy)
+            })
             .catch(err => {
                 msgAlert({
                     heading: 'Oh no!',
-                    message: messages.generalError,
+                    message: 'Failed to load conspiracy details',
                     variant: 'danger'
                 })
             })
-    }, [])
+    }, [conspiracyId, msgAlert])
 
     if (!conspiracy) {
         return <LoadingScreen />
@@ -39,17 +35,15 @@ const ConspiracyShow = (props) => {
 
     return (
         <>
-            <Container className='m-2'>
+            <Container className='m-2' style={conspiracyCardContainerLayout}>
                 <Card>
                     <Card.Header>
-                        { conspiracy.story.title }
+                        { conspiracy.story?.title }
                     </Card.Header>
                     <Card.Body>
-                        {Object.entries(conspiracy.elements).map(([placeholder, content], index) => (
-                            <Card.Text key={index}>
-                                {content}
-                            </Card.Text>
-                        ))}
+                        <Card.Text>
+                        {conspiracy.story.title || 'Story content not available'}
+                        </Card.Text>
                     </Card.Body>
                 </Card>
             </Container>
