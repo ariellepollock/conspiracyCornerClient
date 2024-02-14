@@ -12,7 +12,7 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
-
+import ConspiracyShow from './components/conspiracies/ConspiracyShow'
 import ConspiracyCreate from './components/conspiracies/ConspiracyCreate'
 
 const App = () => {
@@ -88,6 +88,12 @@ const App = () => {
 						</RequireAuth>
 					}
 				/>
+				<Route
+					path='/conspiracies/:conspiracyId'
+					element={
+						<ConspiracyShow msgAlert={msgAlert} user={user} />
+					}
+				/>				
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert

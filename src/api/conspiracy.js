@@ -3,14 +3,7 @@ import axios from 'axios'
 
 // READ -> Conpsiracies Index (my conspiracies)
 export const getAllConspiracies = (user, conspiracyData) => {
-    return axios({
-        url: 'api/conspiracies',
-        method: 'GET',
-        headers: {
-            Authorization: `Token token=${user.token}`,
-        },
-        data: conspiracyData
-    })
+    return axios(`${apiUrl}/conspiracies`)
 }
 
 // READ -> Conspiracy Show (my conspiracy's details)
