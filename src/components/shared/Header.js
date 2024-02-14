@@ -10,56 +10,76 @@ const linkStyle = {
 
 const authenticatedOptions = (
 	<>
-		<Nav.Link className='m-2'>
-			<Link to='create-conspiracy' style={linkStyle}>
+		<Nav.Link 
+			as={Link} 
+			to='create-conspiracy' 
+			className='m-2'
+			style={linkStyle}>
 				Create a Conspiracy
-			</Link>
 		</Nav.Link>
-		<Nav.Link className='m-2'>
-			<Link to='conspiracies' style={linkStyle}>
+		<Nav.Link 
+			as={Link}
+			to='conspiracies' 
+			className='m-2' 
+			style={linkStyle}>
 				My Conspiracies
-			</Link>
 		</Nav.Link>
-		<Nav.Link className='m-2'>
-			<Link to='change-password' style={linkStyle}>
+		<Nav.Link 
+			as={Link} 
+			to='change-password' 
+			className='m-2'
+			style={linkStyle}>
 				Change Password
-			</Link>
 		</Nav.Link>
-		<Nav.Link className='m-2'>
-			<Link to='sign-out' style={linkStyle}>
+		<Nav.Link 
+			as={Link} 
+			to='sign-out' 
+			className='m-2'
+			style={linkStyle}>
 				Sign Out
-			</Link>
 		</Nav.Link>
 	</>
 )
 
 const unauthenticatedOptions = (
 	<>
-        <Nav.Link className='m-2'>
-			<Link to='sign-up' style={linkStyle}>Sign Up</Link>
+        <Nav.Link 
+			as={Link} 
+			to='sign-up' 
+			className='m-2' 
+			style={linkStyle}>
+				Sign Up
         </Nav.Link>
-        <Nav.Link className='m-2'>
-			<Link to='sign-in' style={linkStyle}>Sign In</Link>
+        <Nav.Link 
+			as={Link} 
+			to='sign-in' 
+			className='m-2'
+			style={linkStyle}>
+				Sign In
         </Nav.Link>
 	</>
 )
 
 const alwaysOptions = (
 	<>
-		<Nav.Link className='m-2'>
-			<Link to='/' style={linkStyle}>
+		<Nav.Link 
+			as={Link} 
+			to='/' 
+			className='m-2'
+			style={linkStyle}>
 				Home
-			</Link>
 		</Nav.Link>
 	</>
 )
 
 const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
-		<Navbar.Brand className='m-2'>
-            <Link to='/' style={linkStyle}>
+		<Navbar.Brand 
+			as={Link} 
+			to='/' 
+			className='m-2'
+			style={linkStyle}>
                 Conspiracy Corner
-            </Link>
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse id='basic-navbar-nav'>

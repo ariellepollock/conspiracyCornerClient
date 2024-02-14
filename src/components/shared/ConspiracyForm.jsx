@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Form, Button, Container } from 'react-bootstrap'
 import ElementForm from './ElementForm'
+import apiUrl from '../../apiConfig'
 
-const ConspiracyForm = ({ match }) => {
-    const { storyId, conspiracyId } = useParams()
+const ConspiracyForm = (props) => {
+    const storyId = props.storyId
     const navigate = useNavigate()
     const [story, setStory] = useState(null)
     const [inputs, setInputs] = useState({})
@@ -13,11 +14,12 @@ const ConspiracyForm = ({ match }) => {
 
     // fetch story details by id
     useEffect(() => {
-        axios.get(`/api/stories/${storyId}`)
+        axios.get(`${apiUrl}/stories/${storyId}`)
             .then(res => {
-                setStory(res.data)
+                console.log('story details:', res.data)
+                setStory(res.data.story)
                 // initialize form fields for each placeholder in story template
-                const initialInputs = extractPlaceholders(res.data.template).reduce((acc, placeholder) => {
+                const initialInputs = extractPlaceholders(res.data.story.template).reduce((acc, placeholder) => {
                     acc[placeholder] = ''
                     return acc
                 }, {})
@@ -43,17 +45,18 @@ const ConspiracyForm = ({ match }) => {
     }
 
     // handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = (e, user) => {
         e.preventDefault()
-        const url = conspiracyId ? `/api/conspiracies/${conspiracyId}` : '/api/conspiracies'
-        const method = conspiracyId ? 'put' : 'post'
-
-        axios[method](url, {
+        axios.post(`${apiUrl}/conspiracies`, {
             story: storyId,
             elements: Object.entries(inputs).map(([placeholder, content]) => ({ placeholder, content }))
+        }, {
+            headers: {
+                Authorization: `Token token=${user.token}`
+            }
         })
-        .then(() => {
-            navigate('/conspiracies')
+        .then(res => {
+            navigate(`/conspiracies/${res.data.conspiracy._id}`)
         })
         .catch(() => setError('Failed to submit conspiracy.'))
     }
