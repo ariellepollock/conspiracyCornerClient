@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { getOneConspiracy } from '../../api/conspiracy'
+import { getOneConspiracy, removeConspiracy } from '../../api/conspiracy'
 import LoadingScreen from '../shared/LoadingScreen'
-import { Container, Card } from 'react-bootstrap'
+import { Container, Card, Button } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
 // card container
 const conspiracyCardContainerLayout = {
@@ -14,6 +15,8 @@ const conspiracyCardContainerLayout = {
 const ConspiracyShow = ({ user, msgAlert }) => {
     const { conspiracyId } = useParams()
     const [conspiracy, setConspiracy] = useState(null)
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         getOneConspiracy(conspiracyId)
@@ -28,6 +31,26 @@ const ConspiracyShow = ({ user, msgAlert }) => {
                 })
             })
     }, [conspiracyId, msgAlert])
+
+    // quash a conspiracy
+    const quashConspiracy = () => {
+        removeConspiracy(user, conspiracy._id)
+            .then(() => {
+                msgAlert({
+                    heading: 'success!',
+                    message: 'you quashed that conspiracy!',
+                    variant: 'success'
+                })
+            })
+            .then(() => navigate('/conspiracies'))
+            .catch(err => {
+                msgAlert({
+                    heading: 'Darn!',
+                    message: 'this conspiracy is strong',
+                    variant: 'danger'
+                })
+            })
+    }
 
     if (!conspiracy) {
         return <LoadingScreen />
@@ -55,6 +78,13 @@ const ConspiracyShow = ({ user, msgAlert }) => {
                         {conspiracy.filledStory || 'Story content not available'}
                         </Card.Text>
                     </Card.Body>
+                    <Button
+                        className='m-2'
+                        variant='danger'
+                        onClick={() => quashConspiracy()}
+                    >
+                        Quash this Conspiracy
+                    </Button>
                 </Card>
             </Container>
         </>

@@ -24,4 +24,14 @@ export const createConspiracy = (user, conspiracyData) => {
 }
 
 // UPDATE -> Adjust a Conspiracy
+
 // DELETE -> Quash a Conspiracy
+export const removeConspiracy = (user, id) => {
+    return axios({
+        url: `${apiUrl}/conspiracies/${id}`,
+        method: 'DELETE',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        }
+    })
+}
