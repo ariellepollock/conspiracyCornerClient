@@ -3,10 +3,22 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
 
-const linkStyle = {
-    color: 'white',
-    textDecoration: 'none'
+
+const navbarStyle = {
+    backgroundColor: '#171b37',
 }
+
+const linkStyle = {
+    color: '#dc1f52',
+    textDecoration: 'none',
+	whiteSpace: 'nowrap',
+}
+
+// const dividerStyle = {
+// 	height: '2px',
+// 	backgroundColor: '#dc1f52',
+// 	margin: '0'
+// }
 
 const authenticatedOptions = (
 	<>
@@ -73,16 +85,30 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-	<Navbar bg='primary' variant='dark' expand='md'>
+	<Navbar style={navbarStyle} variant='dark' expand='md'>
 		<Navbar.Brand 
 			as={Link} 
 			to='/' 
-			className='m-2'
-			style={linkStyle}>
+			style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+            <img
+                src="/navLogoMarkB.png"
+                width="50"
+                height="50"
+                className="d-inline-block align-top"
+                alt="Conspiracy Corner Logo"
+                style={{ marginRight: '6px', marginLeft: '20px' }}
+            />
+            <span style={{
+                fontFamily: '"corsario-variable", sans-serif',
+                fontVariationSettings: '"opsz" 48, "wght" 900',
+                color: '#dc1f52',
+				fontSize: '1.4rem'
+            }}>
                 Conspiracy Corner
+			</span>
         </Navbar.Brand>
-		<Navbar.Toggle aria-controls='basic-navbar-nav' />
-		<Navbar.Collapse id='basic-navbar-nav'>
+		<Navbar.Toggle aria-controls='responsive-navbar-nav' />
+		<Navbar.Collapse id='responsive-navbar-nav' className='justify-content-end'>
 			<Nav className='ml-auto'>
 				{user && (
 					<span className='navbar-text m-2'>Welcome, {user.email}</span>
@@ -92,6 +118,7 @@ const Header = ({ user }) => (
 			</Nav>
 		</Navbar.Collapse>
 	</Navbar>
+	// <div style={dividerStyle}></div>
 )
 
 export default Header

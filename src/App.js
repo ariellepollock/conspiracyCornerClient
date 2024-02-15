@@ -1,5 +1,5 @@
 // import React, { Component, Fragment } from 'react'
-import React, { useState, Fragment } from 'react'
+import React, { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 
@@ -45,9 +45,26 @@ const App = () => {
 		})
 	}
 
+	// Define global background style
+	const globalStyle = {
+		backgroundColor: '#171b37',
+		color: '#fff',
+		minHeight: '100vh',
+		width: '100%'
+	}
+
+	// Define a style for the divider line
+	const dividerStyle = {
+		height: '1px',
+		backgroundColor: '#dc1f52',
+		width: 'calc(100% - 20px)',
+		margin: '0 auto'
+	}
+
 	return (
-		<Fragment>
+		<div style={globalStyle}>
 			<Header user={user} />
+			<div style={dividerStyle}></div>
 			<Routes>
 				<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
 				<Route
@@ -121,7 +138,7 @@ const App = () => {
 					deleteAlert={deleteAlert}
 				/>
 			))}
-		</Fragment>
+		</div>
 	)
 }
 
