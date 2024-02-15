@@ -14,3 +14,18 @@ a {
 a:hover {
     color: #b4cbff !important;
 }
+
+button {
+    background-color: #dc1f52 !important;
+    color: white;
+    border: none !important;
+}
+
+.purp {
+    background-color: #aa173e !important;
+}
+
+button:hover {
+    background-color: #b4cbff !important;
+    color: #171b37 !important;
+}

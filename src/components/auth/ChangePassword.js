@@ -47,9 +47,9 @@ const ChangePassword = (props) => {
     return (
         <div className='row'>
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                <h3>Change Password</h3>
+                <h3 className='mx-4' style={{ color: '#dc1f52' }}>Change Password</h3>
                 <Form onSubmit={onChangePassword}>
-                    <Form.Group controlId='oldPassword'>
+                    <Form.Group controlId='oldPassword' className='mb-3 mt-4 mx-4'>
                         <Form.Label>Old password</Form.Label>
                         <Form.Control
                             required
@@ -60,7 +60,7 @@ const ChangePassword = (props) => {
                             onChange={e => setOldPassword(e.target.value)}
                         />
                     </Form.Group>
-                    <Form.Group controlId='newPassword'>
+                    <Form.Group controlId='newPassword' className='mb-3 mt-4 mx-4'>
                         <Form.Label>New Password</Form.Label>
                         <Form.Control
                             required
@@ -71,7 +71,7 @@ const ChangePassword = (props) => {
                             onChange={e => setNewPassword(e.target.value)}
                         />
                     </Form.Group>
-                    <Button className='m-2' variant='primary' type='submit'>
+                    <Button className='m-2 mx-4' variant='primary' type='submit'>
                         Submit
                     </Button>
                 </Form>
