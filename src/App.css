@@ -1,0 +1,16 @@
+body {
+    background-color: #171b37 !important;
+    color: #fff !important;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+a:hover {
+    color: #b4cbff !important;
+}
