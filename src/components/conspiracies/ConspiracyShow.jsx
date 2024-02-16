@@ -26,7 +26,9 @@ const ConspiracyShow = ({ user, msgAlert }) => {
     useEffect(() => {
         getOneConspiracy(conspiracyId)
             .then(res => {
-                setConspiracy(res.data.conspiracy)
+                // Replace \n\n with <br><br> in the filledStory
+                const formattedStory = res.data.conspiracy.filledStory.replace(/\n\n/g, '<br><br>')
+                setConspiracy({...res.data.conspiracy, filledStory: formattedStory})
             })
             .catch(err => {
                 msgAlert({
@@ -75,7 +77,7 @@ const ConspiracyShow = ({ user, msgAlert }) => {
 
     return (
         <>
-            <Container className='mt-5' style={conspiracyCardContainerLayout}>
+            <Container className='mt-5 mb-5' style={conspiracyCardContainerLayout}>
                 <Card style={cardStyle}>
                     <Card.Header className='mt-2' style={{ color: '#dc1f52', fontSize: '1.25rem', textTransform: 'uppercase' }}>
                         { conspiracy.story?.title || 'Story title not available'}
@@ -84,8 +86,11 @@ const ConspiracyShow = ({ user, msgAlert }) => {
                         <Card.Subtitle className='mb-2' style={{ color: '#b4cbff' }}>
                             Created on {displayDate}
                         </Card.Subtitle>
-                        <Card.Text>
-                        {conspiracy.filledStory || 'Story content not available'}
+                        <Card.Text 
+                            dangerouslySetInnerHTML={{ 
+                                __html: conspiracy.filledStory || 'Story content not available' 
+                            }}
+                        >
                         </Card.Text>
                     </Card.Body>
                     <div className='d-flex justify-content-left ms-3 mb-4'>
