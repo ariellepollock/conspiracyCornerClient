@@ -31,7 +31,7 @@ const ConspiracyShow = ({ user, msgAlert }) => {
             .catch(err => {
                 msgAlert({
                     heading: 'Oh no!',
-                    message: 'Failed to load conspiracy details',
+                    message: 'Failed to load conspiracy details.',
                     variant: 'danger'
                 })
             })
@@ -47,16 +47,16 @@ const ConspiracyShow = ({ user, msgAlert }) => {
         removeConspiracy(user, conspiracy._id)
             .then(() => {
                 msgAlert({
-                    heading: 'success!',
-                    message: 'you quashed that conspiracy!',
-                    variant: 'success'
+                    heading: 'Good Riddance!',
+                    message: 'you quashed that conspiracy.',
+                    variant: 'secondary'
                 })
             })
             .then(() => navigate('/conspiracies'))
             .catch(err => {
                 msgAlert({
                     heading: 'Darn!',
-                    message: 'this conspiracy is strong',
+                    message: 'this conspiracy is strong.',
                     variant: 'danger'
                 })
             })
@@ -89,13 +89,19 @@ const ConspiracyShow = ({ user, msgAlert }) => {
                         </Card.Text>
                     </Card.Body>
                     <div className='d-flex justify-content-left ms-3 mb-4'>
+                        <Button
+                            className='mt-2 me-3 purp'
+                            onClick={() => navigate('/conspiracies')}
+                        >
+                            All My Conspiracies
+                        </Button><br />
                         <ButtonGroup>
                             <Button
                                 className='mt-2'
                                 onClick={handleUpdateClick}
                             >
                                 Adjust
-                            </Button>
+                            </Button>                            
                             <Button
                                 className='mt-2 purp'
                                 onClick={() => quashConspiracy()}

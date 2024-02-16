@@ -71,16 +71,16 @@ const ConspiracyForm = ({ user, storyId: propStoryId, msgAlert }) => {
                 .then(res => {
                     navigate(`/conspiracies/${res.data.conspiracy._id}`);
                     msgAlert({
-                        heading: 'Success',
-                        message: 'Conspiracy Updated',
-                        variant: 'success',
+                        heading: 'Success!',
+                        message: 'Your conspiracy has been updated.',
+                        variant: 'secondary',
                     });
                 })
                 .catch(() => {
                     setError('Failed to update conspiracy.');
                     msgAlert({
-                        heading: 'Error',
-                        message: 'Failed to update conspiracy',
+                        heading: 'Error!',
+                        message: 'Failed to update conspiracy.',
                         variant: 'danger',
                     });
                 });

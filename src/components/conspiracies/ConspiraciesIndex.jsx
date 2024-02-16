@@ -2,13 +2,19 @@ import { useState, useEffect } from "react"
 import { getAllConspiracies } from "../../api/conspiracy"
 
 import LoadingScreen from '../shared/LoadingScreen'
-import { Card } from 'react-bootstrap'
+import { Card, Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const cardContainerLayout = {
     display: 'flex',
     flexFlow: 'row wrap',
     justifyContent: 'center'
+}
+
+const cardStyle = {
+    backgroundColor: 'rgba(4, 16, 43, .5)',
+    borderColor: '#b4cbff',
+    alignItems: 'center'
 }
 
 const ConspiraciesIndex = (props) => {
@@ -44,16 +50,35 @@ const ConspiraciesIndex = (props) => {
     }
 
     const conspiracyCards = conspiracies.map(conspiracy => (
-        <Card key={conspiracy._id} style={{ width: '30%', margin: 5 }}>
-            <Card.Header>{conspiracy.story?.title || 'View to Unlock'}</Card.Header>
-            <Card.Body>
-                <Card.Text>
-                    <Link to={`/conspiracies/${conspiracy._id}`} className='btn btn-info'>
-                        VIEW CONSPIRACY
-                    </Link>
-                </Card.Text>
-            </Card.Body>
-        </Card>
+        <Col xs={12} key={conspiracy._id}>       
+            <Card style={cardStyle} className="mt-3 mx-5">
+                <Card.Header
+                    style={{ 
+                        color: '#fff', 
+                        fontSize: '1.25rem', 
+                        textAlign: 'center',
+                        textTransform: 'uppercase',
+                        backgroundColor: 'rgb(4, 16, 43)',
+                        width: '100%',
+                        height: '100%'
+                    }}>
+                        {conspiracy.story?.title || 'View to Unlock'}
+                </Card.Header>
+                <Card.Body>
+                    <Card.Text>
+                        <Link 
+                            to={`/conspiracies/${conspiracy._id}`} 
+                            style={{ 
+                                color: '#dc1f52', 
+                                fontSize: '1rem',
+                            }} 
+                            >
+                            VIEW CONSPIRACY
+                        </Link>
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+        </Col> 
     ))
 
     return (
