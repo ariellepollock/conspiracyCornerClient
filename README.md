@@ -34,6 +34,7 @@ As a user, I want the ability to...
 - CSS3
 
 ## Ice Box
-- Add more stores
-- Add categories so user can search by category
+- Add more stories
+- Add categories so user can search/filter by category
 - Add ability to favorite user stories
+- community conspiracies: allow users to share selected conspiracies to the community page; accessible to all users.
