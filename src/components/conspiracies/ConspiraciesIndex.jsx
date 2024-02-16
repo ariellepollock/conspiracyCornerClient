@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { getAllConspiracies } from "../../api/conspiracy"
 
 import LoadingScreen from '../shared/LoadingScreen'
-import { Card, Col, Row } from 'react-bootstrap'
+import { Card, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const cardContainerLayout = {
