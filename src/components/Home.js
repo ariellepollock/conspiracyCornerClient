@@ -15,7 +15,7 @@ const Home = (props) => {
 
 		setTimeout(() => {
 			navigate('/create-conspiracy')
-		}, 3000)
+		}, 2000)
 	}
 
 	return (

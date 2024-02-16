@@ -44,7 +44,7 @@ const SignIn = (props) => {
     return (
         <div className='row'>
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                <h3 className='mx-4' style={{ color: '#dc1f52' }}>Sign In</h3>
+                <h3 className='mx-4' style={{ color: '#b4cbff' }}>Sign In</h3>
                 <Form onSubmit={onSignIn}>
                     <Form.Group controlId='email' className='mb-3 mt-4 mx-4'>
                         <Form.Label>Email address</Form.Label>

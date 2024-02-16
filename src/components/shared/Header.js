@@ -14,12 +14,6 @@ const linkStyle = {
 	whiteSpace: 'nowrap',
 }
 
-// const dividerStyle = {
-// 	height: '2px',
-// 	backgroundColor: '#dc1f52',
-// 	margin: '0'
-// }
-
 const authenticatedOptions = (
 	<>
 		<Nav.Link 
@@ -41,7 +35,7 @@ const authenticatedOptions = (
 			to='change-password' 
 			className='m-2'
 			style={linkStyle}>
-				Change Password
+				Settings
 		</Nav.Link>
 		<Nav.Link 
 			as={Link} 
@@ -107,7 +101,7 @@ const Header = ({ user }) => (
                 Conspiracy Corner
 			</span>
         </Navbar.Brand>
-		<Navbar.Toggle aria-controls='responsive-navbar-nav' />
+		<Navbar.Toggle aria-controls='responsive-navbar-nav' className='toggleStyle mx-4' />
 		<Navbar.Collapse id='responsive-navbar-nav' className='justify-content-end'>
 			<Nav className='ml-auto'>
 				{user && (

@@ -16,16 +16,24 @@ a:hover {
 }
 
 button {
-    background-color: #dc1f52 !important;
-    color: white;
+    background-color: #b4cbff !important;
+    color: #171b37 !important;
     border: none !important;
 }
 
 .purp {
-    background-color: #aa173e !important;
+    background-color: #93aeec !important;
 }
 
 button:hover {
-    background-color: #b4cbff !important;
-    color: #171b37 !important;
+    background-color: #dc1f52 !important;
+    color: white !important;
+}
+
+.toggleStyle {
+    background-color: transparent !important;
+}
+
+.toggleStyle:hover {
+    background-color: transparent !important;
 }

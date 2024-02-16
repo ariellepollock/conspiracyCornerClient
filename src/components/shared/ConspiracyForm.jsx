@@ -96,9 +96,9 @@ const ConspiracyForm = ({ user, storyId: propStoryId, msgAlert }) => {
     };
 
     return (
-        <Container className='justify-content-center'>
-            <h2>{story?.title || 'Loading story...'}</h2>
-            <Form onSubmit={handleSubmit}>
+        <Container className='justify-content-center mt-5'>
+            <h3 className='mx-4 mb-4' style={{ color: '#b4cbff' }}>{story?.title || 'Loading story...'}</h3>
+            <Form onSubmit={handleSubmit} className='mx-4'>
                 {story && Object.keys(inputs).map((placeholder, index) => (
                     <ElementForm
                         key={`element-${placeholder}-${index}`}
@@ -108,7 +108,7 @@ const ConspiracyForm = ({ user, storyId: propStoryId, msgAlert }) => {
                     />
                 ))}
                 {error && <p>{error}</p>}
-                <Button type="submit" variant="primary" className='mt-2'>
+                <Button type="submit" variant="primary" className='mt-4'>
                     {isEditMode ? 'Update Conspiracy' : 'Create Conspiracy'}
                 </Button>
             </Form>

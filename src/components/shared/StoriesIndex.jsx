@@ -20,12 +20,12 @@ const StoriesIndex = ({ selectedStoryId, onStorySelect }) => {
     }, [])
 
     return (
-        <Container className='justify-content-center mt-4'>
+        <Container className='justify-content-center mt-5'>
             <Form>
-                <Form.Group controlId="storySelect">
-                    <Form.Label>Select a Storyline</Form.Label>
+                <Form.Group controlId="storySelect" className='mx-4' style={{ color: '#b4cbff' }}>
+                    <h2 className='text-center mb-3'>Select a Storyline</h2>
                     <Form.Control as="select" value={selectedStoryId} onChange={onStorySelect}>
-                        <option value="">-- Please choose a story --</option>
+                        <option className='text-center'>-- eeny meeny miny moe --</option>
                         {stories.map(story => (
                             <option key={story._id} value={story._id}>{story.title}</option>
                         ))}
