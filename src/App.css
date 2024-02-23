@@ -37,3 +37,17 @@ button:hover {
 .toggleStyle:hover {
     background-color: transparent !important;
 }
+
+img {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    .container {
+        padding: 10px;
+    }
+}
