@@ -1,18 +1,26 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-// READ -> Conpsiracies Index (my conspiracies)
-export const getAllConspiracies = (user) => {
+// READ -> Conpsiracies Index (all user conspiracies conspiracies)
+// export const getAllConspiracies = (user) => {
+//     return axios({
+//         url: `${apiUrl}/conspiracies`,
+//         method: 'GET',    
+//     })
+// }
+
+// READ -> My Conpsiracies Index (my conspiracies)
+export const getMyConspiracies = (user) => {
     return axios({
-        url: `${apiUrl}/conspiracies`,
+        url: `${apiUrl}/conspiracies/mine`,
         method: 'GET',
-        // headers: {
-        //     Authorization: `Token token=${user.token}`,
-        // },        
+        headers: {
+            Authorization: `Token token=${user.token}`,
+        },        
     })
 }
 
-// READ -> Conspiracy Show (my conspiracy's details)
+// READ -> Conspiracy Show (conspiracy's details)
 export const getOneConspiracy = (id) => {
     return axios(`${apiUrl}/conspiracies/${id}`)
 }

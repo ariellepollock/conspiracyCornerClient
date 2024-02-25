@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { getAllConspiracies } from "../../api/conspiracy"
+import { getMyConspiracies } from "../../api/conspiracy"
 
 import LoadingScreen from '../shared/LoadingScreen'
 import { Card, Col } from 'react-bootstrap'
@@ -21,23 +21,25 @@ const ConspiraciesIndex = (props) => {
     const [conspiracies, setConspiracies] = useState(null)
     const [error, setError] = useState(false)
 
-    const { msgAlert } = props
+    const { user, msgAlert } = props
 
         useEffect(() => {
-            getAllConspiracies()
-                .then(res => {
-                    console.log('use Effect hook ran')
-                    setConspiracies(res.data.conspiracies)
-                })
-                .catch(error => {
-                    msgAlert({
-                        heading: 'Oh no!',
-                        message: 'could not get conspiracies.',
-                        variant: 'danger'
+            if (user) {
+                getMyConspiracies(user)
+                    .then(res => {
+                        console.log('use Effect hook ran')
+                        setConspiracies(res.data.conspiracies)
                     })
-                    setError(true)
-                })
-        }, [])
+                    .catch(error => {
+                        msgAlert({
+                            heading: 'Oh no!',
+                            message: 'could not get conspiracies.',
+                            variant: 'danger'
+                        })
+                        setError(true)
+                    })
+            }
+        }, [user, msgAlert])
 
     if (error) {
         return <LoadingScreen />

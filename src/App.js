@@ -115,7 +115,7 @@ const App = () => {
 					}
 				/>	
 				<Route
-					path='/conspiracies'
+					path='/conspiracies/mine'
 					element={
 						<ConspiraciesIndex msgAlert={msgAlert} user={user} />
 					}

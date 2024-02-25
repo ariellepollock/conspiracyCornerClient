@@ -32,9 +32,9 @@ const ConspiracyShow = ({ user, msgAlert }) => {
             })
             .catch(err => {
                 msgAlert({
-                    heading: 'Oh no!',
-                    message: 'Failed to load conspiracy details.',
-                    variant: 'danger'
+                    heading: 'Good Riddance!',
+                    message: 'you quashed that conspiracy.',
+                    variant: 'secondary'
                 })
             })
     }, [conspiracyId, msgAlert])
@@ -54,7 +54,7 @@ const ConspiracyShow = ({ user, msgAlert }) => {
                     variant: 'secondary'
                 })
             })
-            .then(() => navigate('/conspiracies'))
+            .then(() => navigate('/conspiracies/mine'))
             .catch(err => {
                 msgAlert({
                     heading: 'Darn!',
@@ -96,7 +96,7 @@ const ConspiracyShow = ({ user, msgAlert }) => {
                     <div className='d-flex justify-content-left ms-3 mb-4'>
                         <Button
                             className='mt-2 me-3 purp'
-                            onClick={() => navigate('/conspiracies')}
+                            onClick={() => navigate('/conspiracies/mine')}
                         >
                             All My Conspiracies
                         </Button><br />

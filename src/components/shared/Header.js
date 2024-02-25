@@ -25,7 +25,7 @@ const authenticatedOptions = (
 		</Nav.Link>
 		<Nav.Link 
 			as={Link}
-			to='conspiracies' 
+			to='conspiracies/mine' 
 			className='m-2' 
 			style={linkStyle}>
 				My Conspiracies
